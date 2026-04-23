@@ -34,9 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
             shiftResponses();
         } else {
             CHATS[STATE.CURRENT_USER].push(RESPONSES_USER.neutralAhmad[0])
+            shiftResponses();
         }
 
         ELEMENTS.ELEMENT_CHAT_INPUT.value = "";
+        loadChat(STATE.CURRENT_USER);
         console.log(CHATS)
     };
 
@@ -52,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const textWordCompare = ELEMENTS.ELEMENT_CHAT_INPUT.value.toLowerCase();
 
         if (POSITIVE_WORDS.some(word => textWordCompare.includes(word))) return "positive"
-        if (NEGATIVE_WORDS_WORDS.some(word => textWordCompare.includes(word))) return "negative"
+        if (NEGATIVE_WORDS.some(word => textWordCompare.includes(word))) return "negative"
 
         return "neutral"
     }
@@ -75,6 +77,7 @@ function loadChat(name) {
 
     for (const msg of CHATS[name]) {
         const div = document.createElement("div");
+        if (!msg) return
         div.classList.add("message", msg.from);
         div.innerHTML = msg.text;
         ELEMENTS.ELEMENT_CHAT_MESSAGES.appendChild(div);

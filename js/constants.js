@@ -52,7 +52,7 @@ export const POSITIVE_WORDS = [
     "yes", "shure", "np", "omw", "ty", "thank", "good", "yep"
 ]
 export const NEGATIVE_WORDS = [
-    "bad", "no", "hate", "terrible", "sad", "angry"
+    "bad", "no", "hate", "terrible", "sad", "angry", "nigger"
 ]
 
 export const USER_ELEMENTS = {
