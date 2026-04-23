@@ -8,20 +8,31 @@ export const ELEMENTS = {
     ELEMENT_CHAT_MESSAGES: null,
 };
 
-export const CURRENT_USER = ""
+export const STATE = {
+    CURRENT_USER: "Ahmad"
+}
 
 export const CHATS = {
     Ahmad: [
-        { from: "other", text: "Hey, are you there?" },
-        { from: "me", text: "Yes, what's up?" },
+        { from: "me", text: "Hey, are you there?" },
+        { from: "other", text: "Yes, what's up?" },
     ],
     Sarah: [
-        { from: "other", text: "Did you see the game?" },
-        { from: "me", text: "Yes it was crazy!" },
+        { from: "me", text: "Did you see the game?" },
+        { from: "other", text: "Yes it was crazy!" },
     ],
-    Omar: [],
-    Lina: [],
-    David: [],
+    Omar: [
+        { from: "me", text: "Hey, are you ready for the test tomorrow?" },
+        { from: "other", text: "Not really, I feel like I still have a lot to study." },
+    ],
+    Lina: [
+        { from: "me", text: "Do you want to grab something to eat after this?" },
+        { from: "other", text: "Yeah, I’m starving, let’s go!" },
+    ],
+    David: [
+        { from: "me", text: "Did you finish the assignment yet?" },
+        { from: "other", text: "Almost, I just need to review it once more." },
+    ],
 };
 
 export const POSITIVE_WORDS = [

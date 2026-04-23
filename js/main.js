@@ -1,4 +1,4 @@
-import { ELEMENTS, USER_ELEMENTS, initElements, CHATS, CURRENT_USER, POSITIVE_WORDS, NEGATIVE_WORDS } from "./constants.js";
+import { ELEMENTS, USER_ELEMENTS, initElements, CHATS, POSITIVE_WORDS, NEGATIVE_WORDS, STATE } from "./constants.js";
 
 //wait all is loaded
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,28 +19,26 @@ document.addEventListener("DOMContentLoaded", () => {
     ELEMENTS.ELEMENT_SEND_BUTTON.onclick = (e) => {
         e.stopPropagation();
         const text = ELEMENTS.ELEMENT_CHAT_INPUT.value;
-
         if (!text) return;
+
+        CHATS[STATE.CURRENT_USER].push({ from: "me", text: text });
         const div = document.createElement("div");
         div.classList.add("message", "me");
         div.innerHTML = text;
         ELEMENTS.ELEMENT_CHAT_MESSAGES.appendChild(div);
 
         ELEMENTS.ELEMENT_CHAT_INPUT.value = "";
-    }
+        console.log(CHATS)
+    };
+    
 
-    //checks what u click if the clicked element = USER_ELEMENTS change the color
     window.onclick = (e) => {
         if (Object.values(USER_ELEMENTS).includes(e.target)) {
             ELEMENTS.ELEMENT_CHAT_HEADER.innerHTML = e.target.innerHTML;
-
+            STATE.CURRENT_USER = e.target.innerHTML;
             changeColor(e.target);
-            loadChat(e.target.innerHTML)
+            loadChat(e.target.innerHTML);
         }
-
-        console.log(e.target);
-        changeColor(e.target);
-
     };
 });
 
