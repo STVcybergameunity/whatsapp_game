@@ -1,5 +1,6 @@
-import { ELEMENTS, USER_ELEMENTS, initElements } from "./constants.js";
+import { ELEMENTS, USER_ELEMENTS, initElements, CHATS, CURRENT_USER, POSITIVE_WORDS, NEGATIVE_WORDS } from "./constants.js";
 
+//wait all is loaded
 document.addEventListener("DOMContentLoaded", () => {
     initElements(); // ← move this here so all elements are ready
 
@@ -7,20 +8,62 @@ document.addEventListener("DOMContentLoaded", () => {
         ELEMENTS.ELEMENT_PLAY_BUTTON.onclick = startGame;
     }
 
+    //enter clicks the send button
+    ELEMENTS.ELEMENT_CHAT_INPUT.onkeydown = (e) => {
+        if (e.key === "Enter") {
+            ELEMENTS.ELEMENT_SEND_BUTTON.click();
+        }
+    };
+
+    //allows typing
+    ELEMENTS.ELEMENT_SEND_BUTTON.onclick = (e) => {
+        e.stopPropagation();
+        const text = ELEMENTS.ELEMENT_CHAT_INPUT.value;
+
+        if (!text) return;
+        const div = document.createElement("div");
+        div.classList.add("message", "me");
+        div.innerHTML = text;
+        ELEMENTS.ELEMENT_CHAT_MESSAGES.appendChild(div);
+
+        ELEMENTS.ELEMENT_CHAT_INPUT.value = "";
+    }
+
+    //checks what u click if the clicked element = USER_ELEMENTS change the color
     window.onclick = (e) => {
-        
-        if (e.target == )
-        ELEMENTS.ELEMENT_CHAT_HEADER.innerHTML = e.target.innerHTML
+        if (Object.values(USER_ELEMENTS).includes(e.target)) {
+            ELEMENTS.ELEMENT_CHAT_HEADER.innerHTML = e.target.innerHTML;
+
+            changeColor(e.target);
+            loadChat(e.target.innerHTML)
+        }
+
         console.log(e.target);
         changeColor(e.target);
+
     };
 });
 
+//reload chat
+function loadChat(name) {
+    ELEMENTS.ELEMENT_CHAT_HEADER.innerHTML = name;
+    ELEMENTS.ELEMENT_CHAT_MESSAGES.innerHTML = ""; // clear old messages
+
+    for (const msg of CHATS[name]) {
+        const div = document.createElement("div");
+        div.classList.add("message", msg.from);
+        div.innerHTML = msg.text;
+        ELEMENTS.ELEMENT_CHAT_MESSAGES.appendChild(div);
+    }
+}
+
+//When start button is pressed
 function startGame() {
     ELEMENTS.ELEMENT_FIRST_SCREEN.style.display = "none";
     ELEMENTS.ELEMENT_SECOND_SCREEN.style.display = "block";
 }
 
+//unselect all before reselecting
 function unselectAllUsers(){
 
     for(let i = 0; i<Object.keys(USER_ELEMENTS).length; i++){
@@ -30,6 +73,7 @@ function unselectAllUsers(){
 
 }
 
+//
 function changeColor(clicked) {
     switch(clicked) {
         case USER_ELEMENTS.ELEMENT_AHMAD:
