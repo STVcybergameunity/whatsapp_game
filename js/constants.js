@@ -1,7 +1,11 @@
 export const ELEMENTS = {
+    ELEMENT_PLAY_BUTTON: null,
+    ELEMENT_FIRST_SCREEN: null,
+    ELEMENT_SECOND_SCREEN: null,
+};
 
-    ELEMENT_PLAY_BUTTON: document.getElementById("start-btn"),
-    ELEMENT_FIRST_SCREEN: document.getElementsByClassName("first_screen"),
-    ELEMENT_SECOND_SCREEN: document.getElementsByClassName("second_screen"),
-
+export function initElements() {
+    ELEMENTS.ELEMENT_PLAY_BUTTON  = document.getElementById("start-btn");
+    ELEMENTS.ELEMENT_FIRST_SCREEN = document.getElementById("first_screen");
+    ELEMENTS.ELEMENT_SECOND_SCREEN = document.getElementById("second_screen");
 }

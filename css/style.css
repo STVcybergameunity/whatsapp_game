@@ -1,8 +1,9 @@
-.first_screen{
+#first_screen{
     display: block;
 }
 
-.second_screen{
+#second_screen{
+    display: none;
     margin: 0;
     background-image: url("../image.png");
     background-size: cover;
