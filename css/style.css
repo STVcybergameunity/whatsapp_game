@@ -1,3 +1,10 @@
+:root{
+
+    --Selected-color: #1c252a;
+    --Unselected-color: #202c33;
+
+}
+
 #first_screen{
     display: block;
 }
@@ -79,12 +86,21 @@ body {
     flex-direction: column;
 }
 
-.chat-item{
+ul{
+
+    margin-top: 10%;
+    list-style-type: none;
+
+}
+
+li {
+
     padding: 18px;
     color: white;
     border-bottom: 1px solid #2a3942;
     cursor: pointer;
     transition: background 0.2s;
+
 }
 
 .chat-item:hover{
@@ -107,7 +123,7 @@ body {
 
 /* Chat header */
 
-.chat-header{
+#chat-header{
     padding: 15px;
     background: #202c33;
     color: white;
