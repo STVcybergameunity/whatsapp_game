@@ -1,8 +1,8 @@
-import { ELEMENTS, USER_ELEMENTS, initElements, CHATS, POSITIVE_WORDS, NEGATIVE_WORDS, STATE } from "./constants.js";
+import { ELEMENTS, USER_ELEMENTS, initElements, CHATS, POSITIVE_WORDS, NEGATIVE_WORDS, STATE, RESPONSES_USER } from "./constants.js";
 
 //wait all is loaded
 document.addEventListener("DOMContentLoaded", () => {
-    initElements(); // ← move this here so all elements are ready
+    initElements();
 
     if (ELEMENTS.ELEMENT_PLAY_BUTTON) {
         ELEMENTS.ELEMENT_PLAY_BUTTON.onclick = startGame;
@@ -30,6 +30,16 @@ document.addEventListener("DOMContentLoaded", () => {
         ELEMENTS.ELEMENT_CHAT_INPUT.value = "";
         console.log(CHATS)
     };
+
+    function getUserResponse(){
+
+        const textWordCompare = ELEMENTS.ELEMENT_CHAT_INPUT.value.toLowerCase();
+
+        if (POSITIVE_WORDS.some(word => textWordCompare.includes(word))) return "positive"
+        if (NEGATIVE_WORDS_WORDS.some(word => textWordCompare.includes(word))) return "positive"
+
+        return "neutral"
+    }
     
 
     window.onclick = (e) => {

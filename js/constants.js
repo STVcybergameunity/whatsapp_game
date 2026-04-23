@@ -14,8 +14,9 @@ export const STATE = {
 
 export const CHATS = {
     Ahmad: [
-        { from: "me", text: "Hey, are you there?" },
-        { from: "other", text: "Yes, what's up?" },
+        { from: "other", text: "Hey, are you there?" },
+        { from: "me", text: "Yes, what's up?" },
+        { from: "other", text: "I did something very stupid, can u keep a secret?" },
     ],
     Sarah: [
         { from: "me", text: "Did you see the game?" },
@@ -35,11 +36,20 @@ export const CHATS = {
     ],
 };
 
+export const RESPONSES_USER = {
+    positiveAhmad: [
+        { from: "other", text: "You're a life-saver, so I may have gambled alot of money on a online casino." }
+    ],
+    negativeAhmad: [
+        { from: "other", text: "Could you stop acting like a child?" }
+    ]
+}
+
 export const POSITIVE_WORDS = [
     "yes", "shure", "np", "omw", "ty", "thank", "good", "yep"
 ]
 export const NEGATIVE_WORDS = [
-
+    "bad", "no", "hate", "terrible", "sad", "angry"
 ]
 
 export const USER_ELEMENTS = {

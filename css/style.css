@@ -63,6 +63,10 @@ body {
     box-shadow: 0 10px 20px rgba(0,0,0,0.35);
 }
 
+#chat-Ahmad{
+    background: var(--Selected-color);
+}
+
 /* ===== WhatsApp layout ===== */
 
 .whatsapp-layout{
