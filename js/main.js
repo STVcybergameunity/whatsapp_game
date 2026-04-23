@@ -26,17 +26,33 @@ document.addEventListener("DOMContentLoaded", () => {
         div.classList.add("message", "me");
         div.innerHTML = text;
         ELEMENTS.ELEMENT_CHAT_MESSAGES.appendChild(div);
+        if (getUserResponse() == "positive"){
+            CHATS[STATE.CURRENT_USER].push(RESPONSES_USER.positiveAhmad[0])
+            shiftResponses();
+        } else if (getUserResponse() == "negative"){
+            CHATS[STATE.CURRENT_USER].push(RESPONSES_USER.negativeAhmad[0])
+            shiftResponses();
+        } else {
+            CHATS[STATE.CURRENT_USER].push(RESPONSES_USER.neutralAhmad[0])
+        }
 
         ELEMENTS.ELEMENT_CHAT_INPUT.value = "";
         console.log(CHATS)
     };
 
+    function shiftResponses(){
+        RESPONSES_USER.positiveAhmad.shift();
+        RESPONSES_USER.negativeAhmad.shift();
+        RESPONSES_USER.neutralAhmad.shift();
+    }
+
+    //will check if the player used a positive or negative word
     function getUserResponse(){
 
         const textWordCompare = ELEMENTS.ELEMENT_CHAT_INPUT.value.toLowerCase();
 
         if (POSITIVE_WORDS.some(word => textWordCompare.includes(word))) return "positive"
-        if (NEGATIVE_WORDS_WORDS.some(word => textWordCompare.includes(word))) return "positive"
+        if (NEGATIVE_WORDS_WORDS.some(word => textWordCompare.includes(word))) return "negative"
 
         return "neutral"
     }

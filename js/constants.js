@@ -42,6 +42,9 @@ export const RESPONSES_USER = {
     ],
     negativeAhmad: [
         { from: "other", text: "Could you stop acting like a child?" }
+    ],
+    neutralAhmad: [
+        { from: "other", text: "Please, I really need to tell someone." }
     ]
 }
 
