@@ -1,4 +1,8 @@
 .first_screen{
+    display: block;
+}
+
+.second_screen{
     margin: 0;
     background-image: url("../image.png");
     background-size: cover;
@@ -6,16 +10,16 @@
     background-repeat: no-repeat;
     height: 100vh;
 }
-.second_screen{
+
+body {
     margin: 0;
-    background-image: url("../design_ethos_banner.jpg.webp");
+    padding: 0;
+    background-image: url("/image.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;
 }
-
-
 
 .foto{
     position: fixed;
@@ -34,7 +38,7 @@
 }
 
 .start-btn{
-    margin-top: 450px;
+    margin-top: 550px;
     padding: 12px 40px;
     font-size: 18px;
     border-radius: 25px;

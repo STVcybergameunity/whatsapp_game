@@ -3,15 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
-    <title>bitch</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Whatsapp Game</title>
 </head>
 <body>
 
-    <div class="foto">
-        <button class="start-btn" onclick="window.location.href='first_chat.html'">
-            start
-        </button>
-    </div>
+    <screen_1 class="first_screen">
+
+        <div class="foto">
+            <button id="start-btn" class="start-btn">
+                start
+            </button>
+        </div>
+
+    </screen_1>
+
+    <screen_2 class="second_screen">
+
+        <div class="whatsapp-layout">
+
+            <!-- Sidebar with chats -->
+            <div class="chat-sidebar">
+                <div class="chat-item">Ahmad</div>
+                <div class="chat-item">Sarah</div>
+                <div class="chat-item">Omar</div>
+                <div class="chat-item">Lina</div>
+                <div class="chat-item">David</div>
+            </div>
+
+            <!-- Chat area -->
+            <div class="chat-area">
+                <div class="chat-header">
+                    Ahmad
+                </div>
+
+                <div class="chat-messages">
+                    <div class="message other">Hey, are you there?</div>
+                    <div class="message me">Yes, what's up?</div>
+                </div>
+
+                <div class="chat-input">
+                    <input type="text" placeholder="Type a message...">
+                    <button>Send</button>
+                </div>
+            </div>
+
+        </div>
+
+    </screen_2>
+
 </body>
+<script type="module" src="../js/main.js"></script>
 </html>
