@@ -38,21 +38,33 @@ export const CHATS = {
 
 export const RESPONSES_USER = {
     positiveAhmad: [
-        { from: "other", text: "You're a life-saver, so I may have gambled alot of money on a online casino." }
+        { from: "other", text: "You're a life-saver, so I may have gambled alot of money on a online casino." },
+        { from: "other", text: "Thank you, but I still need to find a way to make up the money." },
+        { from: "other", text: "That actually helps more than you think." },
+        { from: "other", text: "Honestly, I’m glad I told you first." },
+        { from: "other", text: "See you later."}
     ],
     negativeAhmad: [
-        { from: "other", text: "Could you stop acting like a child?" }
+        { from: "other", text: "Could you stop acting like a child?" },
+        { from: "other", text: "You're really not helping with this." },
+        { from: "other", text: "I don’t have the patience for this at the moment." },
+        { from: "other", text: "Why do you always make things harder." },
+        { from: "other", text: "Seriously? Stop it!" },
     ],
     neutralAhmad: [
-        { from: "other", text: "Please, I really need to tell someone." }
+        { from: "other", text: "Please, I really need to tell someone." },
+        { from: "other", text: "I don’t know who else to talk to about this." },
+        { from: "other", text: "It’s nothing specific, just… something on my mind." },
+        { from: "other", text: "There’s just… a lot going on, I guess." },
+        { from: "other", text: "It’s… hard to put into words right now." }
     ]
 }
 
 export const POSITIVE_WORDS = [
-    "yes", "shure", "np", "omw", "ty", "thank", "good", "yep"
+    "yes", "shure", "np", "omw", "ty", "thank", "good", "yep", "fine", "okay", "try", "bye"
 ]
 export const NEGATIVE_WORDS = [
-    "bad", "no", "hate", "terrible", "sad", "angry", "nigger"
+    "bad", "no", "hate", "terrible", "sad", "angry", "fuck"
 ]
 
 export const USER_ELEMENTS = {
