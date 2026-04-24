@@ -8,6 +8,7 @@ export const ELEMENTS = {
     ELEMENT_CHAT_MESSAGES: null,
     ELEMENT_QUIT_BUTTON: null,
     ELEMENT_THIRD_SCREEN: null,
+    ELEMENT_FOURTH_SCREEN: null,
 };
 
 export const STATE = {
@@ -48,6 +49,14 @@ export const CHATS = {
     ],
 };
 
+export const CHAT_ID_TO_USER = {
+    "chat-Ahmad": "Ahmad",
+    "chat-Sarah": "Sarah",
+    "chat-Omar": "Omar",
+    "chat-Lina": "Lina",
+    "chat-David-Item": "David",
+};
+
 export const RESPONSES_USER = {
     positiveAhmad: [
         { from: "other", text: "You're a life-saver, so I may have gambled alot of money on a online casino." },
@@ -69,6 +78,9 @@ export const RESPONSES_USER = {
         { from: "other", text: "It’s nothing specific, just… something on my mind." },
         { from: "other", text: "There’s just… a lot going on, I guess." },
         { from: "other", text: "It’s… hard to put into words right now." }
+    ],
+    neutralSarah: [
+        {  }
     ]
 }
 
@@ -76,7 +88,7 @@ export const POSITIVE_WORDS = [
     "yes", "shure", "np", "omw", "ty", "thank", "good", "yep", "fine", "okay", "try", "bye"
 ]
 export const NEGATIVE_WORDS = [
-    "bad", "no", "hate", "terrible", "sad", "angry", "fuck", "die"
+    "bad", "no", "hate", "terrible", "sad", "angry", "fuck", "die", "kill"
 ]
 
 export const USER_ELEMENTS = {
@@ -98,6 +110,7 @@ export function initElements() {
     ELEMENTS.ELEMENT_SEND_BUTTON = document.querySelector(".chat-input button");
     ELEMENTS.ELEMENT_CHAT_MESSAGES = document.querySelector(".chat-messages");
     ELEMENTS.ELEMENT_THIRD_SCREEN = document.getElementById("third_screen");
+    ELEMENTS.ELEMENT_FOURTH_SCREEN = document.getElementById("David")
     ELEMENTS.ELEMENT_QUIT_BUTTON = document.getElementById("quit");
     USER_ELEMENTS.ELEMENT_AHMAD = document.getElementById("chat-Ahmad");
     USER_ELEMENTS.ELEMENT_SARAH = document.getElementById("chat-Sarah");

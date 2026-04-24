@@ -1,4 +1,4 @@
-import { ELEMENTS, USER_ELEMENTS, initElements, CHATS, POSITIVE_WORDS, NEGATIVE_WORDS, STATE, RESPONSES_USER } from "./constants.js";
+import { ELEMENTS, USER_ELEMENTS, initElements, CHATS, CHAT_ID_TO_USER, POSITIVE_WORDS, NEGATIVE_WORDS, STATE, RESPONSES_USER } from "./constants.js";
 
 let maxScore = 0
 let score = 0
@@ -89,19 +89,34 @@ function handleChatSidebarClick(event) {
         return;
     }
 
-    const selectedUser = target.id.replace(/^chat-/, "");
+    const selectedUser = getUserFromChatId(target.id);
     STATE.CURRENT_USER = selectedUser;
     ELEMENTS.ELEMENT_CHAT_HEADER.innerHTML = selectedUser;
     changeColor(target);
     loadChat(selectedUser);
 }
 
+function getUserFromChatId(chatId) {
+    return CHAT_ID_TO_USER[chatId] || chatId.replace(/^chat-/, "");
+}
+
 function addMessageToChat(text, sender) {
+    if (!CHATS[STATE.CURRENT_USER]) {
+        return;
+    }
+
     CHATS[STATE.CURRENT_USER].push({ from: sender, text });
+
     const messageElement = document.createElement("div");
     messageElement.classList.add("message", sender);
     messageElement.innerHTML = text;
     ELEMENTS.ELEMENT_CHAT_MESSAGES.appendChild(messageElement);
+
+    if (STATE.CURRENT_USER === "David" && text.toLowerCase() === "item") {
+        ELEMENTS.ELEMENT_FOURTH_SCREEN.style.display = "block";
+        ELEMENTS.ELEMENT_SECOND_SCREEN.style.display = "none";
+        time(2000);
+    }
 }
 
 function getUserResponse(text) {
@@ -143,6 +158,14 @@ function loadChat(name) {
 function startGame() {
     ELEMENTS.ELEMENT_FIRST_SCREEN.style.display = "none";
     ELEMENTS.ELEMENT_SECOND_SCREEN.style.display = "block";
+    ELEMENTS.ELEMENT_FOURTH_SCREEN.style.display = "none";
+    ELEMENTS.ELEMENT_THIRD_SCREEN.style.display = "none";
+}
+
+function time(t) {
+    setTimeout(() => {
+        startGame();
+    }, t);
 }
 
 // unselect all sidebar users before selecting one
@@ -158,6 +181,14 @@ function changeColor(clicked) {
     unselectAllUsers();
     if (clicked) {
         clicked.style.background = "var(--Selected-color)";
+    }
+}
+
+function checkSecrets(text) {
+    if (STATE.CURRENT_USER === "David" && text.toLowerCase().includes("item")) {
+        ELEMENTS.ELEMENT_FOURTH_SCREEN.style.display = "block";
+        ELEMENTS.ELEMENT_SECOND_SCREEN.style.display = "none";
+        time(2000)
     }
 }
 
