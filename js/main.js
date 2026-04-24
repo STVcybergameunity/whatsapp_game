@@ -2,6 +2,9 @@
 
 import { ELEMENTS, USER_ELEMENTS, initElements, CHATS, POSITIVE_WORDS, NEGATIVE_WORDS, STATE, RESPONSES_USER } from "./constants.js";
 
+let maxScore = 0
+let score = 0
+
 // Main entry point: wait until the page is ready
 document.addEventListener("DOMContentLoaded", () => {
     initElements();
@@ -17,8 +20,17 @@ function setupEventListeners() {
     ELEMENTS.ELEMENT_SEND_BUTTON.onclick = handleSendButtonClick;
 
     const chatSidebar = document.querySelector(".chat-sidebar");
+    
     if (chatSidebar) {
         chatSidebar.addEventListener("click", handleChatSidebarClick);
+        
+        ELEMENTS.ELEMENT_QUIT_BUTTON.addEventListener("click", function(event) {
+            if (maxScore >= 5) {
+                handleQuitButtonClick(event);
+            }else{
+                alert("You need to atleast 5 questions before going to results")
+            }
+        });
     }
 }
 
@@ -26,6 +38,12 @@ function handleChatInputKeyDown(event) {
     if (event.key === "Enter") {
         ELEMENTS.ELEMENT_SEND_BUTTON.click();
     }
+}
+
+function handleQuitButtonClick(event) {
+    event.stopPropagation();
+    ELEMENTS.ELEMENT_SECOND_SCREEN.style.display = "none"
+    ELEMENTS.ELEMENT_THIRD_SCREEN.style.display = "block"
 }
 
 function handleSendButtonClick(event) {
@@ -75,14 +93,17 @@ function getUserResponse(text) {
     const normalizedText = text.toLowerCase();
 
     if (POSITIVE_WORDS.some((word) => normalizedText.includes(word))) {
+        score++
+        maxScore++
         return "positive";
-    }
-
-    if (NEGATIVE_WORDS.some((word) => normalizedText.includes(word))) {
+    }else if (NEGATIVE_WORDS.some((word) => normalizedText.includes(word))) {
+        score--
+        maxScore++
         return "negative";
+    }else{
+        maxScore++
+        return "neutral";
     }
-
-    return "neutral";
 }
 
 // reload the current chat messages
