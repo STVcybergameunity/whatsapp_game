@@ -14,6 +14,16 @@ export const STATE = {
     CURRENT_USER: "Ahmad"
 }
 
+export const MESSAGE_COUNT = {
+    Ahmad: 0,
+    Sarah: 0,
+    Omar: 0,
+    Lina: 0,
+    David: 0
+};
+
+export const MESSAGE_LIMIT = 5
+
 export const CHATS = {
     Ahmad: [
         { from: "other", text: "Hey, are you there?" },

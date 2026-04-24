@@ -1,5 +1,3 @@
-
-
 import { ELEMENTS, USER_ELEMENTS, initElements, CHATS, POSITIVE_WORDS, NEGATIVE_WORDS, STATE, RESPONSES_USER } from "./constants.js";
 
 let maxScore = 0
@@ -34,6 +32,22 @@ function setupEventListeners() {
     }
 }
 
+function updateScoreBar() {
+    const circleFill = document.getElementById("circle-fill");
+    const scoreText = document.getElementById("score-text");
+    if (!circleFill || !scoreText) return;
+
+    const percentage = maxScore === 0 ? 0 : (score / maxScore) * 100;
+    const isLessOrEqual50 = percentage <= 50;
+
+    const displayPercent = Math.abs(Math.round(percentage));
+    const clamped = Math.min(displayPercent, 100);
+
+    circleFill.style.strokeDasharray = `${clamped}, 100`;
+    circleFill.style.stroke = isLessOrEqual50 ? "#e74c3c" : "#25D366";
+    scoreText.textContent =  displayPercent + "%";
+}
+
 function handleChatInputKeyDown(event) {
     if (event.key === "Enter") {
         ELEMENTS.ELEMENT_SEND_BUTTON.click();
@@ -42,8 +56,9 @@ function handleChatInputKeyDown(event) {
 
 function handleQuitButtonClick(event) {
     event.stopPropagation();
-    ELEMENTS.ELEMENT_SECOND_SCREEN.style.display = "none"
-    ELEMENTS.ELEMENT_THIRD_SCREEN.style.display = "block"
+    ELEMENTS.ELEMENT_SECOND_SCREEN.style.display = "none";
+    ELEMENTS.ELEMENT_THIRD_SCREEN.classList.add("active");
+    updateScoreBar();
 }
 
 function handleSendButtonClick(event) {
@@ -97,10 +112,10 @@ function getUserResponse(text) {
         maxScore++
         return "positive";
     }else if (NEGATIVE_WORDS.some((word) => normalizedText.includes(word))) {
-        score--
         maxScore++
         return "negative";
     }else{
+        score += 0.5
         maxScore++
         return "neutral";
     }
